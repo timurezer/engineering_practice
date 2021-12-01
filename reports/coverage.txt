@@ -1,0 +1,11 @@
+Name                                                                Stmts   Miss  Cover
+---------------------------------------------------------------------------------------
+/home/timurezer/JupyterProjects/Engineering_practice/src/utils.py     139      9    94%
+__init__.py                                                             0      0   100%
+test_kdtree.py                                                         17      0   100%
+test_knn.py                                                            20      0   100%
+test_metrics.py                                                        16      0   100%
+test_read.py                                                           12      2    83%
+test_split.py                                                          16      0   100%
+---------------------------------------------------------------------------------------
+TOTAL                                                                 220     11    95%
