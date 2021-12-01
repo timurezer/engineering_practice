@@ -92,13 +92,20 @@ def get_precision_recall_accuracy(y_pred: np.array, y_true: np.array
     # для того, чтобы посчитать метрики для каждого класса, нам нужно
     # посчитать для них TP, FN, FP
     # еще надо понять, для чего считать, то есть нам нужен массив с классами
-    classes = np.unique(y_true)
+    classes = set(np.unique(y_true)).union(set(np.unique(y_pred)))
+    classes = np.array(sorted(list(classes)))
     for item in classes:
         TP = sum((y_pred == item) * (y_true == item))
         FP = sum((y_pred == item) * (y_true != item))
         FN = sum((y_pred != item) * (y_true == item))
-        precision = np.append(precision, [TP / (TP + FP)])
-        recall = np.append(recall, [TP / (TP + FN)])
+        if TP + FP > 0:
+            precision = np.append(precision, [TP / (TP + FP)])
+        else:
+            precision = np.append(precision, [0])
+        if TP + FN > 0:
+            recall = np.append(recall, [TP / (TP + FN)])
+        else:
+            recall = np.append(recall, [0])
     return precision, recall, accuracy
 
 
