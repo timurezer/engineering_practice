@@ -1,11 +1,11 @@
 import numpy as np
 import pandas as pd
-from typing import NoReturn, Tuple, List
+from typing import NoReturn, Tuple
 
 
 def read_cancer_dataset(path_to_csv: str) -> Tuple[np.array, np.array]:
     """
-     
+
     Parameters
     ----------
     path_to_csv : str
@@ -16,10 +16,10 @@ def read_cancer_dataset(path_to_csv: str) -> Tuple[np.array, np.array]:
     X : np.array
         Матрица признаков опухолей.
     y : np.array
-        Вектор бинарных меток, 1 соответствует доброкачественной опухоли (M), 
+        Вектор бинарных меток, 1 соответствует доброкачественной опухоли (M),
         0 --- злокачественной (B).
 
-    
+
     """
     df = pd.read_csv(path_to_csv).sample(frac=1)  # перемешиваем
     df.loc[df['label'] == 'M', 'label'] = 1
@@ -85,20 +85,29 @@ def get_precision_recall_accuracy(y_pred: np.array, y_true: np.array
         Значение метрики accuracy (одно для всех классов).
 
     """
-    true = sum(y_pred == y_true)  # все правильные делить на все неправильные - accuracy
+    true = sum(
+        y_pred == y_true)
+    # все правильные делить на все неправильные - accuracy
     all = y_pred.shape[0]
     accuracy = true / all
     precision, recall = np.array([]), np.array([])
     # для того, чтобы посчитать метрики для каждого класса, нам нужно
     # посчитать для них TP, FN, FP
     # еще надо понять, для чего считать, то есть нам нужен массив с классами
-    classes = np.unique(y_true)
+    classes = set(np.unique(y_true)).union(set(np.unique(y_pred)))
+    classes = np.array(sorted(list(classes)))
     for item in classes:
         TP = sum((y_pred == item) * (y_true == item))
         FP = sum((y_pred == item) * (y_true != item))
         FN = sum((y_pred != item) * (y_true == item))
-        precision = np.append(precision, [TP / (TP + FP)])
-        recall = np.append(recall, [TP / (TP + FN)])
+        if TP + FP > 0:
+            precision = np.append(precision, [TP / (TP + FP)])
+        else:
+            precision = np.append(precision, [0])
+        if TP + FN > 0:
+            recall = np.append(recall, [TP / (TP + FN)])
+        else:
+            recall = np.append(recall, [0])
     return precision, recall, accuracy
 
 
@@ -113,7 +122,8 @@ class Node:
     def single_query(self, root, point, k):
 
         if root.left is None and root.right is None:
-            neigh_dist = np.sqrt(np.sum((root.data[:, 1:] - point) ** 2, axis=1))
+            neigh_dist = np.sqrt(
+                np.sum((root.data[:, 1:] - point) ** 2, axis=1))
             neigh_index = np.argsort(neigh_dist)
             index = root.data[neigh_index][:k]
             return neigh_dist[neigh_index], index
@@ -128,9 +138,12 @@ class Node:
                 neigh_dist, index = self.single_query(root.right, point, k)
                 opposite = root.left
 
-            if neigh_dist[-1] >= np.sqrt(np.sum(point[axis] - root.value) ** 2) or len(index) < k:
-                opposite_dist, opposite_index = self.single_query(opposite, point, k)
-                return merge(opposite_index, opposite_dist, index, neigh_dist, k)
+            if neigh_dist[-1] >= np.sqrt(np.sum(point[axis] -
+                                         root.value) ** 2) or len(index) < k:
+                opposite_dist, opposite_index = self.single_query(
+                    opposite, point, k)
+                return merge(opposite_index, opposite_dist,
+                             index, neigh_dist, k)
 
             return neigh_dist, index
 
