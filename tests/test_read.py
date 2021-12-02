@@ -3,7 +3,7 @@ import pytest
 from src.utils import read_cancer_dataset
 import pandas as pd
 
-X, y = read_cancer_dataset("../data/raw/cancer.csv")
+X, y = read_cancer_dataset("./data/raw/cancer.csv")
 df = pd.DataFrame(data=X)
 
 def test_Nans():
