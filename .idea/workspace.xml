@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c017288c-700c-4395-9196-8410cdf8d8b3" name="Changes" comment="" />
+    <list default="true" id="c017288c-700c-4395-9196-8410cdf8d8b3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.github/workflows/pytest.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/Engineering_practice.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_kdtree.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_kdtree.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_knn.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_knn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_metrics.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_metrics.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_read.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_read.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_split.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_split.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,7 +49,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/exp/python/src/task3.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager" selected="Python tests.Python tests for test_read.test_Nans">
     <configuration name="Python tests for test_metrics.TestClass.test_precision_score" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
