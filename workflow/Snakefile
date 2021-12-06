@@ -1,0 +1,5 @@
+rule draw_plots:
+    input:
+        "data/raw/cancer.csv"
+    script:
+        "../src/plots.py"
